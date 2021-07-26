@@ -13,12 +13,12 @@
             android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:autoSizeTextType="uniform"
-                    android:text="Welcome,\nUsername"
                     android:textColor="@color/white"
                     android:textSize="30dp"
                     android:textStyle="bold" />

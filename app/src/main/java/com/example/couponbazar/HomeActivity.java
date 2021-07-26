@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -13,6 +14,7 @@ public class HomeActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager;
     fragmentAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

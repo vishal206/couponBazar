@@ -29,8 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("About Us"));
         tabLayout.addTab(tabLayout.newTab().setText("Add Sale"));
         tabLayout.addTab(tabLayout.newTab().setText("Buy"));
-        tabLayout.addTab(tabLayout.newTab().setText("Your Sales"));
-        tabLayout.addTab(tabLayout.newTab().setText("Your Buy"));
+        tabLayout.addTab(tabLayout.newTab().setText("Manage Sales"));
+        tabLayout.addTab(tabLayout.newTab().setText("My Coupons"));
         tabLayout.addTab(tabLayout.newTab().setText("Contact Us"));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

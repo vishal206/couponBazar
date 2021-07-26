@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CouponBazar">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,9 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".HomeActivity">
         </activity>
         <activity android:name=".Splash_screen" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#001E6C"
+    android:background="@drawable/background_two"
     tools:context=".contactUsFragment">
 
     <TextView
@@ -37,8 +37,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/edittext_design"
-        android:hint="message"
         android:gravity="start"
+        android:hint="message"
         android:paddingHorizontal="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"

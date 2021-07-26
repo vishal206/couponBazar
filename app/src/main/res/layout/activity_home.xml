@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#001E6C"
+    android:background="@drawable/background_two"
     tools:context=".HomeActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#035397"
+        android:background="#054F98"
         app:layout_constraintBottom_toTopOf="@+id/guideline44"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

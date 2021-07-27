@@ -21,10 +21,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline60" />
 
     <EditText
+        android:id="@+id/cbrand"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/edittext_design"
-        android:hint="coupon brand"
+        android:hint="Coupon brand"
         android:paddingHorizontal="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -34,11 +35,12 @@
         app:layout_constraintTop_toTopOf="@+id/guideline66" />
 
     <EditText
+        android:id="@+id/ben"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/edittext_design"
         android:gravity="start"
-        android:hint="description"
+        android:hint="Benefits"
         android:paddingHorizontal="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -48,10 +50,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline68" />
 
     <EditText
+        android:id="@+id/code"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/edittext_design"
-        android:hint="coupon code"
+        android:hint="Coupon code"
         android:paddingHorizontal="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -61,10 +64,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline70" />
 
     <EditText
+        android:id="@+id/cprice"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/edittext_design"
-        android:hint="selling prize"
+        android:hint="Selling price"
         android:inputType="number"
         android:paddingHorizontal="10dp"
         android:textColor="@color/white"
@@ -75,6 +79,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline72" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sell"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/my_button"

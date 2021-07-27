@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Splash_screen extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN_TIME_OUT=1000;
+    private static int SPLASH_SCREEN_TIME_OUT=2000;
     private FirebaseAuth mAuth;
     FirebaseUser currentUser;
 
@@ -39,7 +39,7 @@ public class Splash_screen extends AppCompatActivity {
                     startActivity(new Intent(Splash_screen.this,SignupActivity.class));
                     finish();
                 }else{
-                    Intent i=new Intent(Splash_screen.this,HomeActivity.class);
+                    Intent i=new Intent(Splash_screen.this,LoginActivity.class);
                     startActivity(i);
                     finish();
                 }

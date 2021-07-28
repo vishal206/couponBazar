@@ -1,8 +1,10 @@
 package com.example.couponbazar;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 public class ManageSales {
-    private String brand,benefits,code;
-    private Integer price;
+     String brand,benefits,code;
+     Integer price;
 
     public ManageSales() {
     }

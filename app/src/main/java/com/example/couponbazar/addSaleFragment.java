@@ -29,8 +29,9 @@ import com.google.firebase.database.ValueEventListener;
 public class addSaleFragment extends Fragment {
     EditText couBrand,couCode,couBen,couPrice;
     Button sell;
-    DatabaseReference reff;
+    DatabaseReference reff,reference;
     FirebaseDatabase db;
+    public String name;
     ManageSales manageSales;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -82,7 +83,24 @@ public class addSaleFragment extends Fragment {
         couBen=v.findViewById(R.id.ben);
         couPrice=v.findViewById(R.id.cprice);
         sell=v.findViewById(R.id.sell);
-        reff=FirebaseDatabase.getInstance().getReference().child("Sales");
+        reference=FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user=snapshot.getValue(User.class);
+
+                    name= user.fullName;
+                    reff=FirebaseDatabase.getInstance().getReference().child("Sales").child(""+name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+
+            }
+        });
+
+
         sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,28 +110,23 @@ public class addSaleFragment extends Fragment {
                 String benefits = couBen.getText().toString().trim();
                 String codee = couCode.getText().toString().trim();
                 ManageSales m = new ManageSales(brand, benefits, codee, price);
-                manageSales.setBenefits(benefits);
-                manageSales.setBrand(brand);
-                manageSales.setCode(codee);
-                manageSales.setPrice(price);
-                try {
 
                     reff.setValue(m).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-//                                Toast.makeText(getActivity(), "Sale added!", Toast.LENGTH_SHORT).show();
+                                couCode.setText("");
+                                couBrand.setText("");
+                                couBen.setText("");
+                                couPrice.setText("");
+                                Toast.makeText(getActivity(), "Sale added!", Toast.LENGTH_SHORT).show();
                             } else {
-//                                Toast.makeText(getActivity(), "Some Error Occurred!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Some Error Occurred!", Toast.LENGTH_SHORT).show();
                             }
 
                         }
                     });
 
-
-                } catch (Exception e) {
-//                    Toast.makeText(getActivity(), "error"+e, Toast.LENGTH_SHORT).show();
-                }
             }
         });
         return v;

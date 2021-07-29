@@ -105,7 +105,6 @@ public class buyFragment extends Fragment {
 
                         }
                     });
-                    startActivity(i);
                 }catch (Exception e){
                     Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                 }

@@ -77,7 +77,7 @@ public class yourSaleFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         database= FirebaseDatabase.getInstance().getReference("Sales").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        recyclerView.setHasFixedSize(true);
+
         list=new ArrayList<ManageSales>();
         adapter=new FirstAdapter(list);
         recyclerView.setAdapter(adapter);

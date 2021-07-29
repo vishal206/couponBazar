@@ -32,9 +32,10 @@ public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.MyViewHold
         Buy b = list.get(position);
         holder.cou_ben.setText(b.getBenefits());
         holder.cou_brand.setText(b.getBrand());
+        holder.cou_name.setText(b.getName());
         holder.cou_pno.setText(b.getPhoneNo());
         holder.cou_price.setText(b.getPrice());
-        holder.cou_name.setText(b.getName());
+
 }
 
     @Override

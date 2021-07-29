@@ -29,9 +29,9 @@ import com.google.firebase.database.ValueEventListener;
 public class addSaleFragment extends Fragment {
     EditText couBrand,couCode,couBen,couPrice;
     Button sell;
-    DatabaseReference reff,reference;
+    DatabaseReference reff,reff2,reference;
     FirebaseDatabase db;
-    public String name;
+    public String name,pnumber;
     ManageSales manageSales;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -90,7 +90,13 @@ public class addSaleFragment extends Fragment {
                 User user=snapshot.getValue(User.class);
 
                     name= user.fullName;
-//                    reff=FirebaseDatabase.getInstance().getReference().child("Sales").child(name);
+                    pnumber=user.phone;
+                String price = couPrice.getText().toString().trim();
+                String brand = couBrand.getText().toString().trim();
+                String benefits = couBen.getText().toString().trim();
+                String codee = couCode.getText().toString().trim();
+                Buy buy= new Buy(name,benefits,price,brand,pnumber);
+                    reff2=FirebaseDatabase.getInstance().getReference().child("Sales2").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
             }
 
             @Override
@@ -112,6 +118,7 @@ public class addSaleFragment extends Fragment {
                 String codee = couCode.getText().toString().trim();
                 ManageSales m = new ManageSales(brand, benefits, codee, price);
 
+
                     reff.setValue(m).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -127,6 +134,29 @@ public class addSaleFragment extends Fragment {
 
                         }
                     });
+
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User user=snapshot.getValue(User.class);
+
+                        name= user.fullName;
+                        pnumber=user.phone;
+                        String price = couPrice.getText().toString().trim();
+                        String brand = couBrand.getText().toString().trim();
+                        String benefits = couBen.getText().toString().trim();
+                        String codee = couCode.getText().toString().trim();
+                        Buy buy= new Buy(name,benefits,price,brand,pnumber);
+                        reff2=FirebaseDatabase.getInstance().getReference().child("Sales2").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        reff2.setValue(buy);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+
+                    }
+                });
 
             }
         });

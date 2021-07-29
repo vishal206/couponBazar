@@ -3,6 +3,9 @@ package com.example.couponbazar;
 public class Buy {
     String name,benefits,price,brand,phoneNo;
 
+    public Buy() {
+    }
+
     public Buy(String name, String benefits, String price, String brand, String phoneNo) {
         this.name = name;
         this.benefits = benefits;

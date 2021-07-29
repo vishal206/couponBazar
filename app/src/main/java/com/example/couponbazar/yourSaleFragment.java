@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,9 +33,9 @@ public class yourSaleFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     RecyclerView recyclerView;
-    RVadapter1 adapter;
-    DatabaseReference database;
-    ArrayList<ManageSales2> list;
+    FirstAdapter adapter;
+    DatabaseReference database,ref2;
+    ArrayList<ManageSales> list;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -63,35 +63,29 @@ public class yourSaleFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        final FragmentActivity c = getActivity();
+        final FragmentActivity c = getActivity();
         View view=inflater.inflate(R.layout.fragment_your_sale, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.rview);
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
+        recyclerView = view.findViewById(R.id.rview);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        database= FirebaseDatabase.getInstance().getReference("Sales");
-//        recyclerView.setHasFixedSize(true);
-        list=new ArrayList<ManageSales2>();
-        adapter=new RVadapter1(getContext(),list);
+        database= FirebaseDatabase.getInstance().getReference("Sales").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        recyclerView.setHasFixedSize(true);
+        list=new ArrayList<ManageSales>();
+        adapter=new FirstAdapter(list);
         recyclerView.setAdapter(adapter);
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    ManageSales2 m=dataSnapshot.getValue(ManageSales2.class);
+                    ManageSales m=dataSnapshot.getValue(ManageSales.class);
                     list.add(m);
                 }
                 adapter.notifyDataSetChanged();

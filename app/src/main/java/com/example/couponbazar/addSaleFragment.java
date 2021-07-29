@@ -90,7 +90,7 @@ public class addSaleFragment extends Fragment {
                 User user=snapshot.getValue(User.class);
 
                     name= user.fullName;
-                    reff=FirebaseDatabase.getInstance().getReference().child("Sales").child(""+name);
+//                    reff=FirebaseDatabase.getInstance().getReference().child("Sales").child(name);
             }
 
             @Override
@@ -104,8 +104,9 @@ public class addSaleFragment extends Fragment {
         sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                reff=FirebaseDatabase.getInstance().getReference().child("Sales").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("s");
 
-                int price = Integer.parseInt(couPrice.getText().toString().trim());
+                String price = couPrice.getText().toString().trim();
                 String brand = couBrand.getText().toString().trim();
                 String benefits = couBen.getText().toString().trim();
                 String codee = couCode.getText().toString().trim();

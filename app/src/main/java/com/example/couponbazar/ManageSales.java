@@ -1,15 +1,14 @@
 package com.example.couponbazar;
 
-import androidx.recyclerview.widget.RecyclerView;
 
 public class ManageSales {
      String brand,benefits,code;
-     Integer price;
+     String price;
 
     public ManageSales() {
     }
 
-    public ManageSales(String brand, String benefits, String code, Integer price) {
+    public ManageSales(String brand, String benefits, String code, String price) {
         this.brand = brand;
         this.benefits = benefits;
         this.code = code;
@@ -40,11 +39,11 @@ public class ManageSales {
         this.code = code;
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 }

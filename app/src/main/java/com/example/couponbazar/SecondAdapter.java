@@ -14,6 +14,14 @@ import java.util.ArrayList;
 public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.MyViewHolderr>{
     Context context;
     ArrayList<Buy> list;
+    private OnItemClickListener mlistener;
+    public interface OnItemClickListener{
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mlistener = listener;
+    }
 
     public SecondAdapter( ArrayList<Buy> list) {
 //        this.context = context;
@@ -24,7 +32,7 @@ public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.MyViewHold
     @Override
     public MyViewHolderr onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.buy_sales,parent,false);
-        return new MyViewHolderr(view);
+        return new MyViewHolderr(view,mlistener);
     }
 
     @Override
@@ -46,13 +54,24 @@ public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.MyViewHold
         TextView cou_brand,cou_ben,cou_price,cou_pno,cou_name;
 
 
-        public MyViewHolderr(@NonNull View itemView) {
+        public MyViewHolderr(@NonNull View itemView,OnItemClickListener listener) {
             super(itemView);
             cou_pno=itemView.findViewById(R.id.pno);
             cou_brand=itemView.findViewById(R.id.brandd);
             cou_ben=itemView.findViewById(R.id.bene);
             cou_price=itemView.findViewById(R.id.pricee);
             cou_name=itemView.findViewById(R.id.namee);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
 
         }
     }

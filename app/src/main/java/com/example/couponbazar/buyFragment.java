@@ -1,5 +1,6 @@
 package com.example.couponbazar;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +29,7 @@ import java.util.ArrayList;
  */
 public class buyFragment extends Fragment {
     RecyclerView recyclerView;
-    DatabaseReference reference;
+    DatabaseReference reference,ref;
     SecondAdapter adapter;
     ArrayList<Buy> list;
 
@@ -78,6 +81,34 @@ public class buyFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        adapter.setOnItemClickListener(new SecondAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                try {
+                    Intent i = new Intent(getActivity(), payment_gateway.class);
+                    ref=FirebaseDatabase.getInstance().getReference("Sales2").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Buy buy = snapshot.getValue(Buy.class);
+                            if(buy != null){
+                                i.putExtra("key_pno",buy.phoneNo);
+                                i.putExtra("key_price",buy.price);
+                                startActivity(i);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    startActivity(i);
+                }catch (Exception e){
+                    Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline45" />
 
     <EditText
+        android:id="@+id/edt_subject"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/edittext_design"
@@ -34,6 +35,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline51" />
 
     <EditText
+        android:id="@+id/edt_message"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/edittext_design"
@@ -48,6 +50,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline53" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_send"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/my_button"
